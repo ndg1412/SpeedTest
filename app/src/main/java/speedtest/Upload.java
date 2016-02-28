@@ -72,7 +72,7 @@ public class Upload {
     public void Upload_Run() {
         uploadTestListenerList.onUploadProgress(0);
 
-        BlockingQueue queue = new LinkedBlockingQueue(6);
+        BlockingQueue queue = new LinkedBlockingQueue(Config.NUMBER_QUEUE_THREAD);
         Producer procedure = new Producer(queue, sizes);
         Consumer consumer = new Consumer(queue, total_size);
         Thread thPro = new Thread(procedure);

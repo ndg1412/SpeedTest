@@ -48,4 +48,5 @@ public class Config {
     public static String WLAN_IF = "wlan0";
     public static long TIMER_SLEEP = 1000;
     public static int RADIUS = 120; //in dpi unit
+    public static int NUMBER_QUEUE_THREAD = 6;
 }
