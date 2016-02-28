@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SpeedTest</string>
+    <string name="name">SPEEDTEST</string>
+    <string name="download">Download</string>
+    <string name="max">Max</string>
+    <string name="avg">Avg</string>
+    <string name="upload">Upload</string>
+    <string name="latency">Ping</string>
+    <string name="loss">Packet loss</string>
+    <string name="status">status</string>
+    <string name="begin_test">Begin Test</string>
+    <string name="stserverhost">Server host</string>
+    <string name="stserverport">Server port</string>
+    <string name="stbtserverok">Ok</string>
+    <string name="best_server">Best Server</string>
+</resources>
