@@ -9,4 +9,5 @@ public interface IUploadListener {
     public void onUploadError(int errorCode, String message);
 
     public void onUploadProgress(int percent);
+    public void onUploadUpdate(float speed);
 }

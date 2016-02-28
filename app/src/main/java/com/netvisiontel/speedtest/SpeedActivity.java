@@ -197,6 +197,14 @@ public class SpeedActivity extends Activity {
                             public void onUploadProgress(int percent) {
 //                            Log.d(TAG, "Upload  percent: " + percent);
                             }
+
+                            @Override
+                            public void onUploadUpdate(float speed) {
+                                Log.d(TAG, "onDownloadUpdate speed: " + speed);
+                                Message msg = new Message();
+                                msg.obj = speed;
+                                hSpeedCircle.sendMessage(msg);
+                            }
                         });
 //                    up.Upload_Run();
                         isRunning = false;

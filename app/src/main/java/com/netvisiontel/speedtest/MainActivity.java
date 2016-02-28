@@ -384,6 +384,11 @@ public class MainActivity extends Activity {
                                 hUpload.sendMessage(msg);
                             }
                         }
+
+                        @Override
+                        public void onUploadUpdate(float speed) {
+
+                        }
                     });
 //                    up.Upload_Run();
 //                    pingtest.ping(sdServer.getHost());
