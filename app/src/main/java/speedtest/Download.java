@@ -72,7 +72,7 @@ public class Download {
     public void Download_Run() {
         downloadTestListenerList.onDownloadProgress(0);
 
-        BlockingQueue queue = new LinkedBlockingQueue(Config.NUMBER_QUEUE_THREAD);
+        BlockingQueue queue = new LinkedBlockingQueue(Config.NUMBER_QUEUE_THREAD_DOWNLOAD);
         Producer procedure = new Producer(queue, files);
         Consumer consumer = new Consumer(queue, total_size);
         Thread thPro = new Thread(procedure);
