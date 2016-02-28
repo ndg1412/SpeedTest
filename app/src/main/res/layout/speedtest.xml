@@ -3,14 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_screen">
+    <ImageButton
+        android:id="@+id/ibSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/setting_select"/>
+
 
     <RelativeLayout
         android:id="@+id/rlDownloadSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
         android:visibility="gone">
         <TextView
             android:id="@+id/tvDownloadTitleSpeed"
@@ -21,25 +28,73 @@
             android:textSize="24sp"
             android:textColor="@color/white"
             android:text="@string/download"/>
-
-        <TextView
-            android:id="@+id/tvDownloadMaxResult"
+        <TableLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/tvDownloadTitleSpeed"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="20sp"
-            android:textColor="@color/white"/>
-        <TextView
-            android:id="@+id/tvDownloadAvgResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvDownloadMaxResult"
-            android:layout_centerHorizontal="true"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="20sp"
-            android:textColor="@color/white"/>
+            android:layout_marginTop="20dp">
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:text="@string/max"/>
+                <TextView
+                    android:id="@+id/tvDownloadMaxResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="32sp"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:text="@string/unit"/>
+
+            </TableRow>
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:text="@string/avg"/>
+                <TextView
+                    android:id="@+id/tvDownloadAvgResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="32sp"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:text="@string/unit"/>
+
+            </TableRow>
+
+        </TableLayout>
     </RelativeLayout>
 
     <RelativeLayout
@@ -47,8 +102,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="20dp"
         android:visibility="gone">
         <TextView
             android:id="@+id/tvUploadTitleSpeed"
@@ -60,24 +113,73 @@
             android:textColor="@color/white"
             android:text="@string/upload"/>
 
-        <TextView
-            android:id="@+id/tvUploadMaxResult"
+        <TableLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvUploadTitleSpeed"
-            android:layout_centerHorizontal="true"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="20sp"
-            android:textColor="@color/white"/>
-        <TextView
-            android:id="@+id/tvUploadAvgResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvUploadMaxResult"
-            android:layout_centerHorizontal="true"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="20sp"
-            android:textColor="@color/white"/>
+            android:layout_marginTop="20dp">
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:text="@string/max"/>
+                <TextView
+                    android:id="@+id/tvUploadMaxResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="32sp"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:text="@string/unit"/>
+
+            </TableRow>
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:text="@string/avg"/>
+                <TextView
+                    android:id="@+id/tvUploadAvgResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="32sp"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:text="@string/unit"/>
+
+            </TableRow>
+
+        </TableLayout>
     </RelativeLayout>
     <ProgressBar
         android:id="@+id/pbStatus"
@@ -117,7 +219,7 @@
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
             android:textSize="16pt"
-            android:textColor="@color/white"/>
+            android:textColor="@color/gray"/>
     </RelativeLayout>
     <com.netvisiontel.speedtest.wiget.SpeedView
         android:id="@+id/svSpeedDisplay"

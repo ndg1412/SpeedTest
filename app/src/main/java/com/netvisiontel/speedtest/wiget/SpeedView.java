@@ -112,11 +112,11 @@ public class SpeedView extends View {
 
         float tmp7_x = (float) (cx + r);
         float tmp7_y = (float) (cy);
-        canvas.drawText("700M", tmp7_x - 95, tmp7_y + 15, tPaint);
+        canvas.drawText("800M", tmp7_x - 95, tmp7_y + 15, tPaint);
 
         float tmp8_x = (float) (cx + r*Math.cos(Math.toRadians(30)));
         float tmp8_y = (float) (cy + r*Math.sin(Math.toRadians(30)));
-        canvas.drawText("800M", tmp8_x - 95, tmp8_y + 10, tPaint);
+        canvas.drawText("1000M", tmp8_x - 95, tmp8_y + 10, tPaint);
 
     }
 
@@ -127,7 +127,10 @@ public class SpeedView extends View {
     }
 
     public void setValue(float val) {
-        fAngle = val*0.3f - 120;
+        if(val <= 600)
+            fAngle = val*0.3f - 120;
+        else
+            fAngle = val*0.15f - 120;
         invalidate();
     }
 }
