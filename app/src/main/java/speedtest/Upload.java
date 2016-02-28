@@ -122,8 +122,9 @@ public class Upload {
         @Override
         public void run() {
             String request = Create_Head(size);
-            RandomGen random = new RandomGen(size);
-            byte[] buf = random.getBuf();
+            /*RandomGen random = new RandomGen(size);
+            byte[] buf = random.getBuf();*/
+            byte[] buf = new byte[size];
             Socket socket = null;
             try {
                 socket = new Socket();
