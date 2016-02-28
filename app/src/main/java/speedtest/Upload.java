@@ -85,7 +85,7 @@ public class Upload {
         tiUpload.schedule(new TimerTask() {
             @Override
             public void run() {
-                float upload = ((float)total_upload*8/1000000*(1000/(Config.TIMER_SLEEP)));
+                float upload = ((float)total_upload*8/1000000*(1000f/(Config.TIMER_SLEEP)));
                 lMax.add(upload);
                 total_upload = 0;
                 Log.d(TAG, "speed get byte: " + upload);

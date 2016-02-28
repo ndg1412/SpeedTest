@@ -88,7 +88,7 @@ public class Download {
         tiDownload.schedule(new TimerTask() {
             @Override
             public void run() {
-                float download = (float)((float)total_download*8/1000000*(1000/(Config.TIMER_SLEEP)));
+                float download = (float)((float)total_download*8/1000000*(1000f/(Config.TIMER_SLEEP)));
                 lMax.add(download);
                 downloadTestListenerList.onDownloadUpdate(download);
                 total_download = 0;
