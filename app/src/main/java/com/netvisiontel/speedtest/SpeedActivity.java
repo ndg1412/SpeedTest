@@ -37,9 +37,9 @@ import speedtest.Upload;
 public class SpeedActivity extends Activity {
     private static final String TAG = "SpeedActivity";
     Context context;
-    RelativeLayout rlDownloadSpeed, rlUploadSpeed;
-    TextView tvDownloadMaxResult, tvDownloadAvgResult;
-    TextView tvUploadMaxResult, tvUploadAvgResult;
+    ImageButton ibSetting;
+    RelativeLayout rlSpeed;
+    TextView tvMaxResult, tvAvgResult;
     ProgressBar pbStatus;
     ImageButton ibStartSpeed;
     AsyncTask<Void, Void, String> atSpeedTest;
@@ -53,19 +53,20 @@ public class SpeedActivity extends Activity {
         setContentView(R.layout.speedtest);
         context = this;
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        rlDownloadSpeed = (RelativeLayout) findViewById(R.id.rlDownloadSpeed);
-        rlUploadSpeed = (RelativeLayout) findViewById(R.id.rlUploadSpeed);
-        tvDownloadMaxResult = (TextView) findViewById(R.id.tvDownloadMaxResult);
-        tvDownloadAvgResult = (TextView) findViewById(R.id.tvDownloadAvgResult);
-        tvUploadMaxResult = (TextView) findViewById(R.id.tvUploadMaxResult);
-        tvUploadAvgResult = (TextView) findViewById(R.id.tvUploadAvgResult);
+        ibSetting = (ImageButton) findViewById(R.id.ibSetting);
+        rlSpeed = (RelativeLayout) findViewById(R.id.rlSpeed);
+        tvMaxResult = (TextView) findViewById(R.id.tvMaxResult);
+        tvAvgResult = (TextView) findViewById(R.id.tvAvgResult);
         svSpeedDisplay = (SpeedView) findViewById(R.id.svSpeedDisplay);
         pbStatus = (ProgressBar) findViewById(R.id.pbStatus);
         ibStartSpeed = (ImageButton) findViewById(R.id.ibStartSpeed);
+
+        ibSetting.setOnClickListener(settingListener);
         ibStartSpeed.setOnClickListener(startListener);
-        SettingServer(context);
-
-
+        String ip = prefs.getString(Config.PREF_KEY_SERVER_HOST, null);
+        int port = prefs.getInt(Config.PREF_KEY_SERVER_PORT, 0);
+        if((ip == null) || (port == 0))
+            SettingServer(context);
     }
 
     @Override
@@ -88,20 +89,20 @@ public class SpeedActivity extends Activity {
     final Handler hDownload = new Handler() {
         public void handleMessage(Message msg) {
             pbStatus.setVisibility(View.GONE);
-            rlDownloadSpeed.setVisibility(View.VISIBLE);
+            rlSpeed.setVisibility(View.VISIBLE);
             UpDownObject object = (UpDownObject) msg.obj;
-            tvDownloadMaxResult.setText(String.format("Max:     %.2fMbps", object.getMax()));
-            tvDownloadAvgResult.setText(String.format("Avg:     %.2fMbps", object.getAvg()));
-            svSpeedDisplay.setValue(0);
+            tvMaxResult.setText(String.format("%.2f", object.getMax()));
+            tvAvgResult.setText(String.format("%.2f", object.getAvg()));
+            svSpeedDisplay.setValue(object.getMax());
         }
     };
 
     final Handler hUpload = new Handler() {
         public void handleMessage(Message msg) {
             UpDownObject object = (UpDownObject) msg.obj;
-            tvUploadMaxResult.setText(String.format("Max:     %.2fMbps", object.getMax()));
-            tvUploadAvgResult.setText(String.format("Avg:     %.2fMbps", object.getAvg()));
-            svSpeedDisplay.setValue(0);
+            tvMaxResult.setText(String.format("%.2f", object.getMax()));
+            tvAvgResult.setText(String.format("%.2f", object.getAvg()));
+            svSpeedDisplay.setValue(object.getMax());
         }
     };
 
@@ -120,13 +121,17 @@ public class SpeedActivity extends Activity {
         }
     };
 
-
+    public OnClickListener settingListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SettingServer(context);
+        }
+    };
     public OnClickListener startListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            tvDownloadMaxResult.setText("");
-            tvDownloadAvgResult.setText("");
-            rlDownloadSpeed.setVisibility(View.GONE);
+            rlSpeed.setVisibility(View.GONE);
+            svSpeedDisplay.setValue(0);
             if(!isRunning) {
                 atSpeedTest = new AsyncTask<Void, Void, String>() {
                     @Override

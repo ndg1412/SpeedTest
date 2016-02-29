@@ -53,7 +53,8 @@ public class Download {
         this.files = files;
         sLteName = Network.getLTEIfName();
         for(String file : files) {
-            total_size += getUrlSize("http://" + host + ":" + port + uri + file);
+            String url = String.format("http://%s:%d%s%s", host, port, uri, file);
+            total_size += getUrlSize(url);
             Log.d(TAG, "download total_size: " + total_size);
         }
     }
