@@ -156,6 +156,7 @@ public class SpeedActivity extends Activity {
                                 hDownload.sendMessage(msg);
                             }
 
+
                             @Override
                             public void onDownloadError(int errorCode, String message) {
 

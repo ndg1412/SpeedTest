@@ -67,6 +67,7 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:visibility="visible">
+
         <RelativeLayout
             android:id="@+id/rlSpeed"
             android:layout_width="wrap_content"
